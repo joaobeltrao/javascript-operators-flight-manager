@@ -17,7 +17,8 @@ function Util() {
     }
 
     function checkInput(input) {
-        if (!input || !input.isInteger()) throw new Error ("not a number or is empty")
+     
+        if (!input || !(Number.isInteger(parseInt(input)))) {throw new Error ("not a number or is empty")} else return true;
     }
 
     function calculateTotalDistance(arr) {
