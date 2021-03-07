@@ -16,6 +16,23 @@ function Util() {
         return totalNumberOfPassengers;
     }
 
-    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers}
+    function checkInput(input) {
+        if (!input || !input.isInteger()) throw new Error ("not a number or is empty")
+    }
+
+    function calculateTotalDistance(arr) {
+        let totalDistance = arr.reduce(((r, x) => x > 0 ?  x + r: r), 0);
+        return totalDistance;
+        }
+
+    function calculateBonusPoints(arrDistanceBusinessSeats, arrDistanceEconomySeats, businessBonusPct, economyBonusPct) {
+        let businessPoints = (calculateTotalDistance(arrDistanceBusinessSeats))*(businessBonusPct/100);
+        let economyPoints = (calculateTotalDistance(arrDistanceEconomySeats))*(economyBonusPct/100);
+        let totalPoints = businessPoints + economyPoints;
+        return (totalPoints);
+    }
+
+    return {calculateTotalDistributedPassengers, calculateTotalNumberOfPassengers, checkInput, calculateTotalDistance, calculateBonusPoints}
+
 }
 module.exports = Util();
